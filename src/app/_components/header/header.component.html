@@ -1,0 +1,11 @@
+<header>
+    <div class="logo d-flex align-items-center float-left">
+        <a routerLink="/main/" class="d-flex align-items-center">
+            <img src="../../../assets/images/logo1.png" width="107px">
+        </a>
+    </div>
+    <div class="d-flex align-items-center float-right">
+        <p class="mb-0 mr-3">Welcome, {{username}}</p>
+        <button class="btn btn-secondary float-right text-nowrap" (click)="logout()">Log out</button>
+    </div>
+</header>

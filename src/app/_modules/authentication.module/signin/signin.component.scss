@@ -1,0 +1,38 @@
+@import "../../../../scss/auth.scss";
+
+.headerContent {
+    z-index: 5;
+}
+.signin{
+    .content {
+        .forgotPassword {
+            padding: 0px 85px 40px 25px;
+            display: flex;
+            align-items: center;
+
+
+            flex-direction: column;
+            a {
+                font-size: 14px;
+            }
+        }
+        form {
+            .form-group {
+                height: 40px;
+            }
+        }
+    }
+    
+}
+
+@media screen and (max-width: 1440px) {
+    .content {
+        form {
+            .bigBtn {
+                margin: 0 auto 10px !important;
+            }
+        }
+    }
+}
+
+/*# sourceURL=signin.component.scss */

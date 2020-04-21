@@ -1,0 +1,125 @@
+/* upload video components */
+
+$textColorSecondary: #676c7c;
+$textColorGold: #c9ac75;
+
+@-webkit-keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+@-moz-keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+@keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+
+
+.iconWrapper {
+    width: 41px;
+    height: 41px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &:active {
+        opacity: 0.7;
+        transition: all 0.1s;
+    }
+}
+
+.iconWrapper.tick {
+    width: 20px !important;
+    height: 20px !important;
+    img {
+        width: 14px !important;
+    }
+}
+
+.iconWrapper.light {
+    background: -webkit-linear-gradient(90deg, #199fc1 0%, #42b5bc 57%, #62c5b7 100%);
+    background: -moz-linear-gradient(90deg, #199fc1 0%, #42b5bc 57%, #62c5b7 100%);
+    background: -o-linear-gradient(90deg, #199fc1 0%, #42b5bc 57%, #62c5b7 100%);
+    background: -ms-linear-gradient(90deg, #199fc1 0%, #42b5bc 57%, #62c5b7 100%);
+    background: linear-gradient(0deg, #199fc1 0%, #42b5bc 57%, #62c5b7 100%); 
+}
+
+.iconWrapper.dark {
+    background-color: #676e7d;
+}
+
+.iconWrapper.mediumSize {
+    width: 51px;
+    height: 51px;
+}
+
+.iconWrapper.btnSearch {
+    width: 81px;
+    height: 39px;
+    background-color: #eee;
+    border-left: solid 1px #ddd;
+    margin-right: 2px;
+    &:hover {
+        background-color: #ddd;
+    }
+    img {
+        width: 29px !important;
+        height: 29px !important;
+    }
+}
+
+@media only screen and (max-width: 1440px) {
+    .iconWrapper {
+        width: 31px;
+        height: 31px;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .iconWrapper.btnSearch {
+        height: 33px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .iconWrapper.mediumSize {
+        width: 45px;
+        height: 41px;
+        img {
+            width: 24px;
+        }
+    }
+    .iconWrapper.btnSearch {
+        width: 70px;
+        height: 33px;
+        img {
+            width: 24px;
+        }
+    }
+}

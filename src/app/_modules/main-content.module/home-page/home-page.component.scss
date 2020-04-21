@@ -1,0 +1,17 @@
+.filters{
+    border:1px solid #646464;
+    padding: 10px;
+    .filter-buttons{
+        display: flex;
+        align-items: center;
+    }
+}
+
+
+
+::-webkit-datetime-edit-year-field:not([aria-valuenow]),
+::-webkit-datetime-edit-month-field:not([aria-valuenow]),
+::-webkit-datetime-edit-day-field:not([aria-valuenow]) {
+    color: transparent;
+}
+

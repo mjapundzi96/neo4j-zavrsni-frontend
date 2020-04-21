@@ -1,0 +1,136 @@
+
+input[disabled],
+button[disabled] {
+    cursor: not-allowed !important;
+    opacity: 0.5 !important;
+}
+
+.container-button {
+    margin: 0 35px 30px 35px;
+    .btn {
+        background:#32669a;
+        color: white;
+        height: 40px;
+        min-width:100px;
+        font-weight: 300;
+    }
+}
+
+.headerContent{
+    padding:2rem;
+}
+
+.content {
+    .link a {
+       color: #a0a0a0;
+       font-weight: 300;
+       font-size: 13px;
+    }
+    h1{
+        padding-bottom: 25px;
+    }
+    form {
+        display: flex;
+        flex-direction: column;
+        padding: 0 40px;
+        .form-group {
+            .form-control {
+                &:focus {
+                    box-shadow: none;
+                }
+            }
+        }
+
+        .mat-form-field-appearance-legacy .mat-form-field-subscript-wrapper {
+            margin-top: 5px !important;
+        }
+
+        .text-danger {
+            * {
+                color: #f44336 !important;
+                font-size: 12px !important;
+                margin-top: 5px;
+            }
+        }
+
+        .mat-error {
+            * {
+                font-size: 12px !important;
+            }
+        }
+        .bigBtn {
+            margin: 20px 165px 40px 105px;
+            height: 35px;
+            border: 0;
+            text-transform: uppercase;
+            font-size: 18px;
+            cursor: pointer;
+            background: -webkit-linear-gradient(to right, #199fc1 50%, #42b5bc 10%, #62c5b7 100%);
+            background: -moz-linear-gradient(to right, #199fc1 50%, #42b5bc 10%, #62c5b7 100%);
+            background: -o-linear-gradient(to right, #199fc1 50%, #42b5bc 10%, #62c5b7 100%);
+            background: -ms-linear-gradient(to right, #199fc1 50%, #42b5bc 10%, #62c5b7 100%);
+            background: linear-gradient(to right, #199fc1 50%, #42b5bc 70%, #62c5b7 100%);
+            animation: Gradient 3s ease infinite;
+            background-size: 200% 200%;
+            &:active {
+                background: #017fc1;
+            }
+        }
+    }
+}
+
+
+.whiteForm {
+    background-color: #e6e8ed;
+}
+
+input {
+    &:-webkit-autofill {
+        background-color: transparent !important;
+        -webkit-box-shadow: 0 0 0 30px transparent inset !important;
+    }
+}
+
+.mobileImg {
+    position: absolute;
+    z-index: 1;
+    bottom: -100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: 50% 50%;
+    display: none;
+}
+
+@media only screen and (max-width: 1440px) {
+    .content {
+        form {
+            .bigBtn {
+                margin: 30px auto 30px !important;
+                width: 200px;
+            }
+        }
+    }
+    .imgBox {
+        display: none;
+    }
+    .mobileImg {
+        display: block;
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    .content {
+        form {
+           
+        }
+        .social {
+            * {
+                font-size: 14px;
+            }
+        }
+    }
+}
+
+/*# sourceURL=auth.component.scss */
