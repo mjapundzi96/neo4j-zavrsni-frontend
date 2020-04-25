@@ -9,6 +9,8 @@ import { ToasterModule } from 'angular2-toaster';
 import { AlertService } from './../../_services/alert.service';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+
 
 
 @NgModule({
@@ -24,6 +26,7 @@ import { HttpClientModule } from '@angular/common/http';
         AppRoutingModule,
         ToasterModule.forRoot(),
         CookieModule.forRoot(),
+        NgMultiSelectDropDownModule.forRoot()
     ],
     providers: [
         { provide: APP_BASE_HREF, useValue: '/' },

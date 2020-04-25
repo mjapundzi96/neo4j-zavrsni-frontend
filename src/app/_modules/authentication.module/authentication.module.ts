@@ -5,6 +5,10 @@ import { SigninComponent } from './signin/signin.component';
 import { AuthComponent } from './auth/auth.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared.module/shared.module';
+import { SingupComponent } from './singup/singup.component';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { FormsModule } from '@angular/forms';
+
 
 
 @NgModule({
@@ -13,10 +17,13 @@ import { SharedModule } from '../shared.module/shared.module';
         CommonModule,
         ReactiveFormsModule,
         SharedModule,
+        FormsModule,
+        NgMultiSelectDropDownModule.forRoot()
     ],
     declarations: [
         SigninComponent,
-        AuthComponent
+        AuthComponent,
+        SingupComponent
     ],
     providers: [
     ]

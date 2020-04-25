@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { map, catchError } from 'rxjs/operators';
 import { ErrorsService } from './errors.service';
 import { BASE_URL } from './../../environments/environment';
+import { AlertService } from './alert.service'
 
 @Injectable({
     providedIn: 'root',
@@ -14,7 +15,8 @@ export class LoginService {
     constructor(
         private http: Http,
         private router: Router,
-        private errorsService: ErrorsService
+        private errorsService: ErrorsService,
+        private alertService: AlertService
     ) {
 
     }
@@ -48,6 +50,25 @@ export class LoginService {
                         localStorage.setItem('securityToken', res_json.accessToken);
                         localStorage.setItem('username', data.username);
                     }
+                    this.alertService.success("Logged in successfully!")
+                    return data;
+                }),
+                catchError((err: Response) =>{
+                    this.errorsService._handleError(err);
+                    throw err;
+                }))
+    }
+
+    register(data) {
+        return this.http.post(BASE_URL + 'auth/signup', data, this.loginOptions)
+            .pipe(
+                map((response: Response) => {
+                    const res_json = response.json();
+                    if (data.username && res_json.accessToken) {
+                        localStorage.setItem('securityToken', res_json.accessToken);
+                        localStorage.setItem('username', data.username);
+                    }
+                    this.alertService.success("Account successfully created!")
                     return data;
                 }),
                 catchError((err: Response) =>{

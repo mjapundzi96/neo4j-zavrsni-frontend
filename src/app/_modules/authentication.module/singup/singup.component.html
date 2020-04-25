@@ -1,0 +1,41 @@
+<div class="signin">
+  <div class="headerContent">
+    <div class="content">
+      <div class="logo mb-4">
+        <img class="logo-img" src="./assets/images/logo.png" width="120px">
+      </div>
+      <form [formGroup]="form">
+        <div class="form-group mb-4">
+          <input placeholder="Username" class="form-control" formControlName="username" type="text" (focus)="setActive('login', true)" (blur)="setActive('login', false)" autocorrect="off" autocapitalize="off" spellcheck="false">
+          <div class="error-block fz-12 text-danger mt-1 mb-2" *ngIf="username.invalid && username.touched && username.dirty">
+            <small *ngIf="username.hasError('required')">Username required</small>
+          </div>
+        </div>
+        <div class="form-group mb-4">
+          <input placeholder="Password" class="form-control" formControlName="password" type="password" (focus)="setActive('pass', true)" (blur)="setActive('pass', false)" autocorrect="off" autocapitalize="off" spellcheck="false">
+          <div class="error-block fz-12 text-danger mt-1 mb-2" *ngIf="password.invalid && password.touched && password.dirty">
+            <small *ngIf="password.hasError('required')">Password required</small>
+            <small *ngIf="password.hasError('pattern')">Password too weak</small>
+          </div>
+        </div>
+        <div class="form-group mb-4">
+          <input placeholder="Confirm password" class="form-control" formControlName="confirm_password" type="password" (focus)="setActive('pass', true)" (blur)="setActive('pass', false)" autocorrect="off" autocapitalize="off" spellcheck="false">
+          <div class="error-block fz-12 text-danger mt-1 mb-2" *ngIf="confirm_password.invalid && confirm_password.touched && confirm_password.dirty">
+            <small *ngIf="confirm_password.hasError('required')">Please confirm password</small>
+            <small *ngIf="confirm_password.errors.notMatch">Password don't match</small>
+          </div>
+        </div>
+        <div class="form-group mb-4">
+          <ng-multiselect-dropdown formControlName="favorite_genres" class="form-control p-0" [placeholder]="'Select 2 favorite genres'" [data]="genres" [settings]="dropdownSettings" (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)">
+          </ng-multiselect-dropdown>
+        </div>
+        <div class="container-button">
+          <button type="submit" (click)="onSubmit()" class="btn btn-block" [disabled]="form.invalid">Continue</button>
+        </div>
+      </form>
+      <div class="text-center link">
+        Already have an account? <a routerLink="/auth/signin">Sign in here</a>
+      </div>
+    </div>
+  </div>
+</div>
