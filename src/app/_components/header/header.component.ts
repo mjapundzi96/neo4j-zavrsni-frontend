@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from './../../_services/login.service'
 import { ActivatedRoute, Router } from '@angular/router';
+import { UsersService } from 'src/app/_services/users.service';
 
 @Component({
     selector: 'app-header',
@@ -9,17 +10,21 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 
 export class HeaderComponent implements OnInit {
-    public username:string;
+    public username: string;
     constructor(
-        private loginService:LoginService,
+        private loginService: LoginService,
+        private usersService: UsersService,
         private router: Router
     ) { }
 
     ngOnInit() {
-       this.username = localStorage.getItem('username')
+        const userId = parseInt(localStorage.getItem("user_id"));
+        this.usersService.getUser(userId).subscribe(res=>{
+            this.username = res.username;
+        })
     }
 
-    logout(){
+    logout() {
         this.loginService.logout()
     }
 }

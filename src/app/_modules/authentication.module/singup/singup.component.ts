@@ -86,7 +86,6 @@ export class SingupComponent implements OnInit {
       password: this.password.value,
       favorite_genres: this.favorite_genres.value.map(el => el.id)
     }
-    console.log(data)
     this.loginService.register(data)
       .subscribe(res => {
         this.router.navigateByUrl('/main/')

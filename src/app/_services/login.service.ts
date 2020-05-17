@@ -48,12 +48,12 @@ export class LoginService {
                     const res_json = response.json();
                     if (data.username && res_json.accessToken) {
                         localStorage.setItem('securityToken', res_json.accessToken);
-                        localStorage.setItem('username', data.username);
+                        localStorage.setItem('user_id', res_json.user_id);
                     }
                     this.alertService.success("Logged in successfully!")
                     return data;
                 }),
-                catchError((err: Response) =>{
+                catchError((err: Response) => {
                     this.errorsService._handleError(err);
                     throw err;
                 }))
@@ -71,7 +71,7 @@ export class LoginService {
                     this.alertService.success("Account successfully created!")
                     return data;
                 }),
-                catchError((err: Response) =>{
+                catchError((err: Response) => {
                     this.errorsService._handleError(err);
                     throw err;
                 }))
