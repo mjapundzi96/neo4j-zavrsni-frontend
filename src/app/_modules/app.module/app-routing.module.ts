@@ -12,12 +12,8 @@ const routes: Routes = [
         path: 'auth',
         loadChildren: '../authentication.module/authentication.module#AuthenticationModule'
     }, {
-        path: 'main',
-        loadChildren: '../main-content.module/main-content.module#MainContentModule',
-        canActivate: [MainGuard]
-    }, {
         path: '**',
-        redirectTo: 'main'
+        redirectTo: ''
     }
 ];
 

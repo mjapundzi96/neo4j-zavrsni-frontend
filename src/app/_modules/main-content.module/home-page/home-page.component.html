@@ -1,8 +1,12 @@
 <div class="section">
   <h3 class="section-title">Recommended artists</h3>
-  <div class="row">
-    <div class="col-3" *ngFor="let artist of artists">
-      <p>{{artist.name}}</p>
+  <div class="row no-gutters">
+    <div class="col-3 item" *ngFor="let artist of artists">
+      <div class="item-inner">
+        <div>{{artist.name}}</div>
+        <small class="mb-2">Type: {{artist.type}}</small>
+        <img class="item-img" [src]="artist.imageUrl ? artist.imageUrl : '../../../../assets/images/artist-placeholder.png'" />
+      </div>
     </div>
   </div>
 </div>

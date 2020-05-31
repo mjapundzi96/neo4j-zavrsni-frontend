@@ -7,6 +7,8 @@ import { HeaderComponent } from '../../_components/header/header.component';
 import { FooterComponent } from '../../_components/footer/footer.component';
 import { MainContentComponent } from './main-content/main-content.component';
 import { SpinnerComponent } from './spiner/spiner.component';
+import { ArtistsComponent } from './artists/artists.component';
+import { ArtistsModule } from './artists/artists.module';
 
 @NgModule({
     entryComponents: [],
@@ -15,6 +17,8 @@ import { SpinnerComponent } from './spiner/spiner.component';
         ReactiveFormsModule,
         FormsModule,
         MainContentRoutingModule,
+        ArtistsModule
+
     ],
     declarations: [
         MainContentComponent,
@@ -22,6 +26,7 @@ import { SpinnerComponent } from './spiner/spiner.component';
         HeaderComponent,
         FooterComponent,
         SpinnerComponent,
+
     ],
     providers: []
 })
