@@ -37,9 +37,18 @@ export class UsersService {
         }))
   }
 
+  getRecommendedArtists(user_id: number, offset: number, limit: number) {
+    return this.http.get(`${BASE_URL}users/${user_id}/recommended_artists?offset=${offset}&limit=${limit}`, this.getToken())
+      .pipe(
+        map((response: Response) => response.json()),
+        catchError((err: Response) => {
+          this.errorsService._handleError(err);
+          throw err;
+        }))
+  }
 
-  getFavoriteArtists(user_id: number) {
-    return this.http.get(`${BASE_URL}users/${user_id}/favorite_artists`, this.getToken())
+  getRecommendedAlbums(user_id: number, offset: number, limit: number) {
+    return this.http.get(`${BASE_URL}users/${user_id}/recommended_albums?offset=${offset}&limit=${limit}`, this.getToken())
       .pipe(
         map((response: Response) => response.json()),
         catchError((err: Response) => {

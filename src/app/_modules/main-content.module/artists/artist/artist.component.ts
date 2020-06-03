@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ArtistsService } from 'src/app/_services/artists.service';
 
 @Component({
   selector: 'app-artist',
@@ -7,14 +8,20 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./artist.component.scss']
 })
 export class ArtistComponent implements OnInit {
-  article_id:number;
+  id:number;
+  artist:any;
   constructor(
-    private route:ActivatedRoute
+    private route:ActivatedRoute,
+    private artistsService:ArtistsService
   ) { }
 
   ngOnInit() {
     this.route.params.subscribe(params=>{
-      this.article_id = params.id
+      this.id = params.id
+      this.artistsService.getArtist(this.id).subscribe(res=>{
+        this.artist = res;
+        console.log(this.artist)
+      })
     })
   }
 

@@ -7,8 +7,11 @@ import { HeaderComponent } from '../../_components/header/header.component';
 import { FooterComponent } from '../../_components/footer/footer.component';
 import { MainContentComponent } from './main-content/main-content.component';
 import { SpinnerComponent } from './spiner/spiner.component';
-import { ArtistsComponent } from './artists/artists.component';
 import { ArtistsModule } from './artists/artists.module';
+import { AlbumsModule } from './albums/albums.module';
+import { SongsModule } from './songs/songs.module';
+import { CarouselModule } from 'ngx-owl-carousel-o';
+
 
 @NgModule({
     entryComponents: [],
@@ -17,7 +20,10 @@ import { ArtistsModule } from './artists/artists.module';
         ReactiveFormsModule,
         FormsModule,
         MainContentRoutingModule,
-        ArtistsModule
+        AlbumsModule,
+        ArtistsModule,
+        SongsModule,
+        CarouselModule
 
     ],
     declarations: [
