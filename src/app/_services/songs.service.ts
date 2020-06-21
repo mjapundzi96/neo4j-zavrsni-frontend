@@ -36,4 +36,14 @@ export class SongsService {
           throw err;
         }))
   }
+
+  viewSong(id: number, data: any) {
+    return this.http.post(`${BASE_URL}songs/${id}/view`, data, this.getToken())
+      .pipe(
+        map((response: Response) => response.json()),
+        catchError((err: Response) => {
+          this.errorsService._handleError(err);
+          throw err;
+        }))
+  }
 }

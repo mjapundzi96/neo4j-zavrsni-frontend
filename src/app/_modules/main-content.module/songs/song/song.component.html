@@ -1,3 +1,7 @@
-<p>
-  artist works!
-</p>
+<div class="block-info" *ngIf="song">
+  <h3 class="mx-auto">{{song.title}}</h3>
+  <iframe [src]="getVideoUrl()"></iframe>
+  <div class="mb-2">Views: {{song.views}}</div>
+  <div class="mb-2">Album: <a class="link" href="/albums/{{song.album.id}}">{{song.album.name}}</a></div>
+  <div class="mb-2">Artist: <a class="link" href="/artists/{{song.album.artist.id}}">{{song.album.artist.name}}</a></div>
+</div>

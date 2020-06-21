@@ -1,7 +1,25 @@
 <div class="block-info" *ngIf="artist">
-  <h3>{{artist.name}}</h3>
-  <div class="">{{artist.country}}</div>
-  <div class="cover-img-outer">
-    <img [src]="artist.imageUrl ? artist.imageUrl : '../../../../../assets/images/artist-placeholder.png'"/>
+  <h3 class="mx-auto">{{artist.name}}</h3>
+  <div class="mb-2">{{artist.country}}</div>
+  <div class="cover-img-outer mb-4">
+    <img class="cover-img" [src]="artist.imageUrl ? artist.imageUrl : '../../../../../assets/images/artist-placeholder.png'"/>
+  </div>
+  <div class="section mb-5">
+    <h3 class="section-title">Albums</h3>
+    <ng-container>
+      <owl-carousel-o [options]="customOptions">
+        <ng-template carouselSlide *ngFor="let album of artist.albums">
+          <div class="item" routerLink="/albums/{{album.id}}" (click)="navigateToAlbum(album.id)">
+            <div class="info-line mb-2 title">
+              {{album.name}}
+            </div>
+            <div class="info-line mb-2">Year: {{album.year}}</div>
+            <div class="item-img-outer">
+              <img class="info-line item-img" [src]="album.coverUrl ? album.coverUrl : '../../../../assets/images/album-placeholder.png'" />
+            </div>
+          </div>
+        </ng-template>
+      </owl-carousel-o>
+    </ng-container>
   </div>
 </div>

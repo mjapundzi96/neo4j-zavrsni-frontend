@@ -2,11 +2,15 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ArtistComponent } from './artist/artist.component';
 import { ArtistsComponent } from './artists.component';
+import { CarouselModule } from 'ngx-owl-carousel-o';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [ArtistComponent, ArtistsComponent],
   imports: [
     CommonModule,
+    CarouselModule,
+    RouterModule
   ]
 })
 export class ArtistsModule { }

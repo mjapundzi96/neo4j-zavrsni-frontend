@@ -12,8 +12,8 @@ import { Router } from '@angular/router';
 
 export class HomePageComponent implements OnInit {
     userId: number;
-    artists = [];
-    albums = [];
+    artists;
+    albums;
     customOptions: OwlOptions = {
         loop: false,
         mouseDrag: true,
