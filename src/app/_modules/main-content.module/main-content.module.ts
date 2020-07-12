@@ -11,6 +11,7 @@ import { ArtistsModule } from './artists/artists.module';
 import { AlbumsModule } from './albums/albums.module';
 import { SongsModule } from './songs/songs.module';
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
         HeaderComponent,
         FooterComponent,
         SpinnerComponent,
+        UserProfileComponent,
 
     ],
     providers: []

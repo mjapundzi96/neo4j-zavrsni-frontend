@@ -8,6 +8,7 @@ import { AlbumsComponent } from './albums/albums.component';
 import { AlbumComponent } from './albums/album/album.component';
 import { SongsComponent } from './songs/songs.component';
 import { SongComponent } from './songs/song/song.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 
 const routes: Routes = [
@@ -42,6 +43,10 @@ const routes: Routes = [
             {
                 path:'songs/:id',
                 component:SongComponent
+            },
+            {
+                path:'user-profile',
+                component:UserProfileComponent
             }
         ]
     }

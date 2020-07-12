@@ -3,15 +3,15 @@
   <ng-container *ngIf="artists">
     <owl-carousel-o [options]="customOptions">
       <ng-template carouselSlide *ngFor="let artist of artists">
-        <div class="item" routerLink="/artists/{{artist.id}}">
-          <div class="info-line mb-2 title">
-            {{artist.name}}
+        <div class="card item" routerLink="/artists/{{artist.id}}">
+          <img class="card-img-top" [src]="artist.imageUrl ? artist.imageUrl : '../../../../assets/images/artist-placeholder.png'" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">{{artist.name}}</h5>
           </div>
-          <div class="info-line mb-2">{{artist.country}}</div>
-          <div class="info-line mb-2">Type: {{artist.type}}</div>
-          <div class="item-img-outer">
-            <img class="item-img" [src]="artist.imageUrl ? artist.imageUrl : '../../../../assets/images/artist-placeholder.png'" />
-          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">{{artist.type}}</li>
+            <li class="list-group-item">{{artist.country}}</li>
+          </ul>
         </div>
       </ng-template>
     </owl-carousel-o>
@@ -22,15 +22,15 @@
   <ng-container *ngIf="albums">
     <owl-carousel-o [options]="customOptions" (translated)="getPassedData($event)">
       <ng-template carouselSlide *ngFor="let album of albums">
-        <div class="item" routerLink="/albums/{{album.id}}" (click)="navigateToAlbum(album.id)">
-          <div class="info-line mb-2 title">
-            {{album.name}}
+        <div class="card item" routerLink="/albums/{{album.id}}">
+          <img class="card-img-top" [src]="album.coverUrl ? album.coverUrl : '../../../../assets/images/album-placeholder.png'" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">{{album.name}}</h5>
           </div>
-          <div class="info-line mb-2">Year: {{album.year}}</div>
-          <div class="info-line mb-2">By: {{album.artist.name}}</div>
-          <div class="item-img-outer">
-            <img class="info-line item-img" [src]="album.coverUrl ? album.coverUrl : '../../../../assets/images/album-placeholder.png'" />
-          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Year: {{album.year}}</li>
+            <li class="list-group-item">Artist: {{album.artist.name}}</li>
+          </ul>
         </div>
       </ng-template>
     </owl-carousel-o>

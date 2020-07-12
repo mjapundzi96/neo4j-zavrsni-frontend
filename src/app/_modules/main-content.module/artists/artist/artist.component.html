@@ -9,7 +9,7 @@
     <ng-container>
       <owl-carousel-o [options]="customOptions">
         <ng-template carouselSlide *ngFor="let album of artist.albums">
-          <div class="item" routerLink="/albums/{{album.id}}" (click)="navigateToAlbum(album.id)">
+          <div class="item" routerLink="/albums/{{album.id}}">
             <div class="info-line mb-2 title">
               {{album.name}}
             </div>

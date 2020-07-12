@@ -6,11 +6,13 @@
   </div>
   <div class="section mb-5">
     <h3 class="section-title">Song list</h3>
-    <div class="item mb-3" *ngFor="let song of album.songs" routerLink="/songs/{{song.id}}">
-      <div class="mb-2 title">
-        {{song.title}}
-      </div>
-      <div class="mb-2">Views: {{song.views}}</div>
+    <div class="list-group">
+      <a href="/songs/{{song.id}}" class="list-group-item list-group-item-action" *ngFor="let song of album.songs">
+        <div class="mb-2 title">
+          {{song.title}}
+        </div>
+        <div class="mb-2">Views: {{song.views}}</div>
+      </a>
     </div>
   </div>
 </div>

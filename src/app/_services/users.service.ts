@@ -56,4 +56,14 @@ export class UsersService {
           throw err;
         }))
   }
+
+  getListenHistory(user_id) {
+    return this.http.get(`${BASE_URL}users/${user_id}/listen_history`, this.getToken())
+      .pipe(
+        map((response: Response) => response.json()),
+        catchError((err: Response) => {
+          this.errorsService._handleError(err);
+          throw err;
+        }))
+  }
 }
