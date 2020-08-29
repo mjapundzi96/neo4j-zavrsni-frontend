@@ -17,12 +17,22 @@ export class GenresService {
   ) { }
 
   getAllGenres() {
-    return this.http.get(BASE_URL + 'genres', )
+    return this.http.get(BASE_URL + 'genres',)
       .pipe(
         map((response: Response) => response.json()),
         catchError((err: Response) => {
           this.errorsService._handleError(err);
           throw err;
         }))
+  }
+
+  getPopularAlbumsFromGenre(id: number, offset: number, limit: number) {
+    return this.http.get(`${BASE_URL}genres/${id}/popular_albums?offset=${offset}&limit=${limit}`)
+    .pipe(
+      map((response: Response) => response.json()),
+      catchError((err: Response) => {
+        this.errorsService._handleError(err);
+        throw err;
+      }))
   }
 }

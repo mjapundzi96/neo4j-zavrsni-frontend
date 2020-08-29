@@ -8,10 +8,6 @@
           <div class="card-body">
             <h5 class="card-title">{{artist.name}}</h5>
           </div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">{{artist.type}}</li>
-            <li class="list-group-item">{{artist.country}}</li>
-          </ul>
         </div>
       </ng-template>
     </owl-carousel-o>
@@ -20,7 +16,7 @@
 <div class="section mb-5">
   <h3 class="section-title">Recommended albums</h3>
   <ng-container *ngIf="albums">
-    <owl-carousel-o [options]="customOptions" (translated)="getPassedData($event)">
+    <owl-carousel-o [options]="customOptions">
       <ng-template carouselSlide *ngFor="let album of albums">
         <div class="card item" routerLink="/albums/{{album.id}}">
           <img class="card-img-top" [src]="album.coverUrl ? album.coverUrl : '../../../../assets/images/album-placeholder.png'" alt="Card image cap">

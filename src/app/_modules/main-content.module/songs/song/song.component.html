@@ -1,7 +1,41 @@
-<div class="block-info" *ngIf="song">
+<div class="block-info mb-5" *ngIf="song">
   <h3 class="mx-auto">{{song.title}}</h3>
-  <iframe [src]="getVideoUrl()"></iframe>
+  <iframe class="mb-2" *ngIf="songUrl" [src]="songUrl" allow="autoplay"></iframe>
   <div class="mb-2">Views: {{song.views}}</div>
   <div class="mb-2">Album: <a class="link" href="/albums/{{song.album.id}}">{{song.album.name}}</a></div>
   <div class="mb-2">Artist: <a class="link" href="/artists/{{song.album.artist.id}}">{{song.album.artist.name}}</a></div>
 </div>
+<ng-container *ngIf="usersAlsoViewed">
+  <div class="section mb-5">
+    <h3 class="section-title">Users also viewed</h3>
+    <owl-carousel-o [options]="customOptions">
+      <ng-template carouselSlide *ngFor="let song of usersAlsoViewed">
+        <div class="card item" routerLink="/song/{{song.id}}">
+          <img class="card-img-top" [src]="song.album.coverUrl ? song.album.coverUrl : '../../../../assets/images/album-placeholder.png'" alt="Card image cap">
+          <div class="card-body">
+            <span>{{song.album.artist.name}} - </span>
+            <span>{{song.title}}</span>
+          </div>
+        </div>
+      </ng-template>
+    </owl-carousel-o>
+  </div>
+</ng-container>
+<ng-container *ngIf="relatedSongs">
+  <div class="section mb-5">
+    <h3 class="section-title">Related songs</h3>
+    <owl-carousel-o [options]="customOptions">
+      <ng-template carouselSlide *ngFor="let song of relatedSongs">
+        <div class="card item" routerLink="/song/{{song.id}}">
+          <img class="card-img-top" [src]="song.album.coverUrl ? song.album.coverUrl : '../../../../assets/images/album-placeholder.png'" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">
+              <span>{{song.album.artist.name}} - </span>
+              <span>{{song.title}}</span>
+            </h5>
+          </div>
+        </div>
+      </ng-template>
+    </owl-carousel-o>
+  </div>
+</ng-container>

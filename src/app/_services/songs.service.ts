@@ -46,4 +46,24 @@ export class SongsService {
           throw err;
         }))
   }
+
+  getUsersAlsoViewed(id:number){
+    return this.http.get(`${BASE_URL}songs/${id}/users_also_viewed`, this.getToken())
+      .pipe(
+        map((response: Response) => response.json()),
+        catchError((err: Response) => {
+          this.errorsService._handleError(err);
+          throw err;
+        }))
+  }
+
+  getRelatedSongs(id:number){
+    return this.http.get(`${BASE_URL}songs/${id}/related`, this.getToken())
+    .pipe(
+      map((response: Response) => response.json()),
+      catchError((err: Response) => {
+        this.errorsService._handleError(err);
+        throw err;
+      }))
+  }
 }
