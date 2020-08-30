@@ -1,23 +1,9 @@
-<div class="section mb-5">
-  <h3 class="section-title">Recommended artists</h3>
-  <ng-container *ngIf="artists">
+
+<div class="section mb-5" *ngFor="let genre of popularAlbumsByGenre">
+  <h3 class="section-title">Most popular from {{genre.name}}</h3>
+  <ng-container *ngIf="genre.albums">
     <owl-carousel-o [options]="customOptions">
-      <ng-template carouselSlide *ngFor="let artist of artists">
-        <div class="card item" routerLink="/artists/{{artist.id}}">
-          <img class="card-img-top" [src]="artist.imageUrl ? artist.imageUrl : '../../../../assets/images/artist-placeholder.png'" alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title">{{artist.name}}</h5>
-          </div>
-        </div>
-      </ng-template>
-    </owl-carousel-o>
-  </ng-container>
-</div>
-<div class="section mb-5">
-  <h3 class="section-title">Recommended albums</h3>
-  <ng-container *ngIf="albums">
-    <owl-carousel-o [options]="customOptions">
-      <ng-template carouselSlide *ngFor="let album of albums">
+      <ng-template carouselSlide *ngFor="let album of genre.albums">
         <div class="card item" routerLink="/albums/{{album.id}}">
           <img class="card-img-top" [src]="album.coverUrl ? album.coverUrl : '../../../../assets/images/album-placeholder.png'" alt="Card image cap">
           <div class="card-body">

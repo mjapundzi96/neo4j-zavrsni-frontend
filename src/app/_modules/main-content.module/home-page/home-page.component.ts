@@ -50,6 +50,7 @@ export class HomePageComponent implements OnInit {
                         name,
                         albums:res
                     })
+                    console.log(this.popularAlbumsByGenre)
                 })
             })
         })

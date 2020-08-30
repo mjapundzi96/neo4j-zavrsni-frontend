@@ -1,9 +1,11 @@
 <div class="block-info mb-5" *ngIf="song">
-  <h3 class="mx-auto">{{song.title}}</h3>
-  <iframe class="mb-2" *ngIf="songUrl" [src]="songUrl" allow="autoplay"></iframe>
-  <div class="mb-2">Views: {{song.views}}</div>
-  <div class="mb-2">Album: <a class="link" href="/albums/{{song.album.id}}">{{song.album.name}}</a></div>
-  <div class="mb-2">Artist: <a class="link" href="/artists/{{song.album.artist.id}}">{{song.album.artist.name}}</a></div>
+  <h3 class="mx-auto">{{song.album.artist.name}} - {{song.title}}</h3>
+  <div class="mb-2">Album: <a class="link" routerLink="/albums/{{song.album.id}}">{{song.album.name}}</a></div>
+  <iframe class="mb-2" class="iframe-yt" *ngIf="songUrl" [src]="songUrl" allow="autoplay"></iframe>
+  <div class="d-flex justify-content-between">
+    <div class="mb-2">Views: {{song.views}}</div>
+    <div><button><i class="fa fa-thumbs-up"></i> Like</button></div>
+  </div>
 </div>
 <ng-container *ngIf="usersAlsoViewed">
   <div class="section mb-5">
