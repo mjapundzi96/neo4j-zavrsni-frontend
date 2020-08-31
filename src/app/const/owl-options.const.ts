@@ -6,28 +6,13 @@ export const owlOptions: OwlOptions = {
     touchDrag: true,
     pullDrag: true,
     dots: false,
-    autoplay: false,
-    autoplayTimeout: 5000,
-    autoplayHoverPause: true,
-    navSpeed: 700,
+    navSpeed: 200,
     navText: ['<i class="fa fa-chevron-left"></i>', '<i class="fa fa-chevron-right"></i>'],
     margin: 20,
     responsiveRefreshRate: 0,
     slideBy: 'page',
-    smartSpeed: 1200,
-    responsive: {
-        0: {
-            items: 1,
-        },
-        400: {
-            items: 2,
-        },
-        740: {
-            items: 3,
-        },
-        940: {
-            items: 4,
-        }
-    },
+    smartSpeed: 600,
+    rewind:false,
+    items:5,
     nav: true,
 }

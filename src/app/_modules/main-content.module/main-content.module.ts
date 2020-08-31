@@ -12,6 +12,7 @@ import { AlbumsModule } from './albums/albums.module';
 import { SongsModule } from './songs/songs.module';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { NavBarComponent } from 'src/app/_components/nav-bar/nav-bar.component';
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
         MainContentComponent,
         HomePageComponent,
         HeaderComponent,
+        NavBarComponent,
         FooterComponent,
         SpinnerComponent,
         UserProfileComponent,

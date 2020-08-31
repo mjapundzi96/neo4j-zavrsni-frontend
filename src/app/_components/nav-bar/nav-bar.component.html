@@ -1,0 +1,43 @@
+<nav>
+  <div class="nav-list display-flex justify-content-end">
+    <div class="form-group mb-0">
+      <input type="text" placeholder="Search songs, albums or artists..." (keyup)="onSearch($event)" (click)="onClickInput($event)" class="search-input form-control-sm">
+      <div class="list-group list-autocomplete" *ngIf="search.length >= 2 && !autocompleteClosed">
+        <div class="list-group-item list-group-item-action" *ngFor="let result of searchResults" [ngSwitch]="result.type" (click)="onClick($event)">
+          <a *ngSwitchCase="'Song'" class="d-block" routerLink="/songs/{{result.id}}">
+            <div class="title">
+              <i class="fa fa-music"></i>
+              <span> {{result.album.artist.name}} - {{result.name}}</span>
+            </div>
+            <small *ngIf="result.album">{{result.album.name}}, {{result.album.year.low}}</small>
+          </a>
+          <a *ngSwitchCase="'Album'" class="d-block" routerLink="/albums/{{result.id}}">
+            <div class="d-flex">
+              <div class="img-outer">
+                <img [src]="result.coverUrl" class="mr-1 mb-1" width="35px">
+              </div>
+              <div>
+                <div class="title">
+                  {{result.name}}
+                </div>
+                <div>
+                  <small *ngIf="result.artist">{{result.artist.name}}, {{result.year.low}}</small>
+                </div>
+              </div>
+            </div>
+
+          </a>
+          <a *ngSwitchCase="'Artist'" class="d-block" routerLink="/artists/{{result.id}}">
+            <div class="img-outer mb-1">
+              <img [src]="result.imageUrl" class="mr-1 mb-1" width="100px" class="d-block mx-auto">
+            </div>
+            <div class="title text-center">
+              {{result.name}}
+            </div>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</nav>

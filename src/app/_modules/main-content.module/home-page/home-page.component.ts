@@ -23,6 +23,9 @@ export class HomePageComponent implements OnInit {
     slidesStore: any[];
     favoriteGenres = []
     popularAlbumsByGenre = []
+    bestOfPreferredGenre;
+    bestOfPreferredArtist;
+    bestOfPreferredDecade;
     constructor(
         private usersService: UsersService,
         private router: Router,
@@ -42,17 +45,16 @@ export class HomePageComponent implements OnInit {
             this.albums = res;
         })
 
-        this.appService.getMyFavoriteGenres().subscribe(genres=>{
-            genres.forEach(({id,name})=>{
-                this.genresService.getPopularAlbumsFromGenre(id,0,10).subscribe(res=>{
-                    this.popularAlbumsByGenre.push({
-                        id,
-                        name,
-                        albums:res
-                    })
-                    console.log(this.popularAlbumsByGenre)
-                })
-            })
+        this.appService.getBestOfPreferredGenre().subscribe(res=>{
+            this.bestOfPreferredGenre = res;
+        })
+
+        this.appService.getBestOfPreferredArtist().subscribe(res=>{
+            this.bestOfPreferredArtist = res;
+        })
+
+        this.appService.getBestOfPreferredDecade().subscribe(res=>{
+            this.bestOfPreferredDecade = res;
         })
     }
 }

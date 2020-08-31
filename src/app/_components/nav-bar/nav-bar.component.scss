@@ -1,0 +1,21 @@
+nav{
+    background:#3399ff;
+    padding: 10px;
+    .search-input{
+        width:237px !important;
+    }
+    .list-autocomplete{
+        position: absolute;
+        z-index: 111;
+        .list-group-item{
+            font-size: 0.9rem;
+            .title {
+                font-weight: 600;
+            }
+            .img-outer{
+                max-height: 100px;
+                overflow-y: hidden;
+            }
+        }
+    }
+}

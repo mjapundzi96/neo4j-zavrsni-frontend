@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
+import { NavBarComponent } from 'src/app/_components/nav-bar/nav-bar.component';
 
 @Component({
     selector: 'main-content',
@@ -8,14 +9,16 @@ import { Router, NavigationEnd } from '@angular/router';
 })
 
 export class MainContentComponent implements OnInit {
-    constructor(private router: Router) {}
+    @ViewChild('navbar') navbar:NavBarComponent
+    constructor(
+        private ref:ElementRef<HTMLDivElement>
+    ) {}
 
     ngOnInit() {
-        this.router.events.subscribe((evt) => {
-            if (!(evt instanceof NavigationEnd)) {
-                return;
-            }
-            window.scrollTo(0, 0);
-        });
+       this.ref.nativeElement.onclick = () =>{
+           if (this.navbar){
+               this.navbar.autocompleteClosed = true;
+           }
+       }
     }
 }

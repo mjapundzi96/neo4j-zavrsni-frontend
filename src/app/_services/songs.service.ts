@@ -37,8 +37,8 @@ export class SongsService {
         }))
   }
 
-  viewSong(id: number, data: any) {
-    return this.http.post(`${BASE_URL}songs/${id}/view`, data, this.getToken())
+  viewSong(id: number) {
+    return this.http.post(`${BASE_URL}songs/${id}/view`, {}, this.getToken())
       .pipe(
         map((response: Response) => response.json()),
         catchError((err: Response) => {
@@ -59,6 +59,36 @@ export class SongsService {
 
   getRelatedSongs(id:number){
     return this.http.get(`${BASE_URL}songs/${id}/related`, this.getToken())
+    .pipe(
+      map((response: Response) => response.json()),
+      catchError((err: Response) => {
+        this.errorsService._handleError(err);
+        throw err;
+      }))
+  }
+
+  likeSong(id:number){
+    return this.http.post(`${BASE_URL}songs/${id}/like`, {}, this.getToken())
+      .pipe(
+        map((response: Response) => response.json()),
+        catchError((err: Response) => {
+          this.errorsService._handleError(err);
+          throw err;
+        }))
+  }
+
+  unLikeSong(id:number){
+    return this.http.post(`${BASE_URL}songs/${id}/unlike`, {}, this.getToken())
+      .pipe(
+        map((response: Response) => response.json()),
+        catchError((err: Response) => {
+          this.errorsService._handleError(err);
+          throw err;
+        }))
+  }
+
+  getHasLiked(id:number){
+    return this.http.get(`${BASE_URL}songs/${id}/has_liked`, this.getToken())
     .pipe(
       map((response: Response) => response.json()),
       catchError((err: Response) => {

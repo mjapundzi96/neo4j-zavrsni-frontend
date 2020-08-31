@@ -40,28 +40,13 @@ export class SingupComponent implements OnInit {
       ]),
       'confirm_password': new FormControl('', [
         Validators.required,
-
       ]),
-      'favorite_genres': new FormControl('', [
-        Validators.required,
-      ])
     })
 
     this.username = this.form.get('username');
     this.password = this.form.get('password');
     this.confirm_password = this.form.get('confirm_password');
-    this.favorite_genres = this.form.get('favorite_genres')
-    this.dropdownSettings = {
-      singleSelection: false,
-      idField: 'id',
-      textField: 'name',
-      limitSelection: 2,
-      enableCheckAll: false,
-      //selectAllText: 'Select All',
-      unSelectAllText: 'UnSelect All',
-      itemsShowLimit: 3,
-    };
-
+    
     this.password.valueChanges.subscribe((val)=>{
       this.confirmPassword();
     })
@@ -84,7 +69,6 @@ export class SingupComponent implements OnInit {
     const data = {
       username: this.username.value,
       password: this.password.value,
-      favorite_genres: this.favorite_genres.value.map(el => el.id)
     }
     this.loginService.register(data)
       .subscribe(res => {

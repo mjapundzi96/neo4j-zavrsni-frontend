@@ -86,17 +86,17 @@ body {
 .owl-next {
   position: absolute !important;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translateY(-100%);
   padding: 10px 13px !important;
   font-size: 1.5rem !important;
 }
 
 .owl-prev {
-  left: -65px;
+  left: 0px;
 }
 
 .owl-next {
-  right: -65px
+  right: 0px
 }
 
 .block-info {

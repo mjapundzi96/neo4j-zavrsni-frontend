@@ -15,7 +15,7 @@ export class AppService {
     private router: Router,
     private errorsService: ErrorsService,
     private alertService: AlertService
-    ) {
+  ) {
   }
 
   private getToken() {
@@ -28,8 +28,38 @@ export class AppService {
     }
   }
 
-  getMyFavoriteGenres() {
-    return this.http.get(`${BASE_URL}my_favorite_genres`, this.getToken())
+  getBestOfPreferredArtist(){
+    return this.http.get(`${BASE_URL}bestof_preferred_artist`, this.getToken())
+      .pipe(
+        map((response: Response) => response.json()),
+        catchError((err: Response) => {
+          this.errorsService._handleError(err);
+          throw err;
+        }))
+  }
+
+  getBestOfPreferredGenre(){
+    return this.http.get(`${BASE_URL}bestof_preferred_genre`, this.getToken())
+      .pipe(
+        map((response: Response) => response.json()),
+        catchError((err: Response) => {
+          this.errorsService._handleError(err);
+          throw err;
+        }))
+  }
+
+  getBestOfPreferredDecade(){
+    return this.http.get(`${BASE_URL}bestof_preferred_decade`, this.getToken())
+      .pipe(
+        map((response: Response) => response.json()),
+        catchError((err: Response) => {
+          this.errorsService._handleError(err);
+          throw err;
+        }))
+  }
+
+  searchAll(search: string) {
+    return this.http.get(`${BASE_URL}search_all?search=${search}`, this.getToken())
       .pipe(
         map((response: Response) => response.json()),
         catchError((err: Response) => {

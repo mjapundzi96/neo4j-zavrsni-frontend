@@ -3,38 +3,47 @@
   <div class="mb-2">Album: <a class="link" routerLink="/albums/{{song.album.id}}">{{song.album.name}}</a></div>
   <iframe class="mb-2" class="iframe-yt" *ngIf="songUrl" [src]="songUrl" allow="autoplay"></iframe>
   <div class="d-flex justify-content-between">
-    <div class="mb-2">Views: {{song.views}}</div>
-    <div><button><i class="fa fa-thumbs-up"></i> Like</button></div>
+    <div class="mb-2">
+      <div>{{song.views}} views</div>
+      <div>{{likes}} likes</div>
+    </div>
+    <div>
+      <button class="btn-like" [ngClass]="{ 'btn-liked':hasLiked }" (click)="hasLiked ? unLikeSong() : likeSong()">
+        <i class="fa fa-thumbs-up"></i><span> {{hasLiked ? 'Unlike' : 'Like'}}</span>
+      </button>
+    </div>
   </div>
 </div>
-<ng-container *ngIf="usersAlsoViewed">
+<ng-container *ngIf="relatedSongs">
   <div class="section mb-5">
-    <h3 class="section-title">Users also viewed</h3>
+    <h3 class="section-title">Related songs</h3>
     <owl-carousel-o [options]="customOptions">
-      <ng-template carouselSlide *ngFor="let song of usersAlsoViewed">
-        <div class="card item" routerLink="/song/{{song.id}}">
+      <ng-template carouselSlide *ngFor="let song of relatedSongs">
+        <div class="card item" routerLink="/songs/{{song.id}}">
           <img class="card-img-top" [src]="song.album.coverUrl ? song.album.coverUrl : '../../../../assets/images/album-placeholder.png'" alt="Card image cap">
           <div class="card-body">
-            <span>{{song.album.artist.name}} - </span>
-            <span>{{song.title}}</span>
+            <h5 class="card-title">
+              <span><i class="fa fa-music"></i>&nbsp;</span>
+              <span>{{song.album.artist.name}} - </span>
+              <span>{{song.title}}</span>
+            </h5>
           </div>
         </div>
       </ng-template>
     </owl-carousel-o>
   </div>
 </ng-container>
-<ng-container *ngIf="relatedSongs">
+<ng-container *ngIf="usersAlsoViewed && usersAlsoViewed.length > 0">
   <div class="section mb-5">
-    <h3 class="section-title">Related songs</h3>
+    <h3 class="section-title">Users also viewed</h3>
     <owl-carousel-o [options]="customOptions">
-      <ng-template carouselSlide *ngFor="let song of relatedSongs">
-        <div class="card item" routerLink="/song/{{song.id}}">
+      <ng-template carouselSlide *ngFor="let song of usersAlsoViewed">
+        <div class="card item" routerLink="/songs/{{song.id}}">
           <img class="card-img-top" [src]="song.album.coverUrl ? song.album.coverUrl : '../../../../assets/images/album-placeholder.png'" alt="Card image cap">
           <div class="card-body">
-            <h5 class="card-title">
-              <span>{{song.album.artist.name}} - </span>
-              <span>{{song.title}}</span>
-            </h5>
+            <span><i class="fa fa-music"></i>&nbsp;</span>
+            <span>{{song.album.artist.name}} - </span>
+            <span>{{song.title}}</span>
           </div>
         </div>
       </ng-template>
