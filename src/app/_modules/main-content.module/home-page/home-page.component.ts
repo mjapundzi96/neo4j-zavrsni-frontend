@@ -14,47 +14,46 @@ import { GenresService } from 'src/app/_services/genres.service';
 })
 
 export class HomePageComponent implements OnInit {
-    userId: number;
-    artists;
-    albums;
-
     customOptions = owlOptions;
-    activeSlides: SlidesOutputData;
-    slidesStore: any[];
-    favoriteGenres = []
-    popularAlbumsByGenre = []
+    mostPopularSongs;
     bestOfPreferredGenre;
     bestOfPreferredArtist;
     bestOfPreferredDecade;
+    period: 'week' | 'month' | 'alltime' = 'week'
     constructor(
         private usersService: UsersService,
         private router: Router,
-        private appService:AppService,
-        private genresService:GenresService
+        private appService: AppService,
+        private genresService: GenresService
     ) {
 
     }
 
     ngOnInit() {
-        this.userId = parseInt(localStorage.getItem("user_id"));
-        this.usersService.getRecommendedArtists(this.userId, 0, 10).subscribe(res => {
-            this.artists = res;
-        })
-        
-        this.usersService.getRecommendedAlbums(this.userId, 0, 10).subscribe(res => {
-            this.albums = res;
-        })
+        this.getMostPopular()
 
-        this.appService.getBestOfPreferredGenre().subscribe(res=>{
+        this.appService.getBestOfPreferredGenre().subscribe(res => {
             this.bestOfPreferredGenre = res;
         })
 
-        this.appService.getBestOfPreferredArtist().subscribe(res=>{
+        this.appService.getBestOfPreferredArtist().subscribe(res => {
             this.bestOfPreferredArtist = res;
         })
 
-        this.appService.getBestOfPreferredDecade().subscribe(res=>{
+        this.appService.getBestOfPreferredDecade().subscribe(res => {
             this.bestOfPreferredDecade = res;
         })
+
+    }
+
+    getMostPopular() {
+        this.appService.getMostPopularSongs(this.period).subscribe(res => {
+            this.mostPopularSongs = res;
+        })
+    }
+
+    onChangePeriod(e) {
+        this.period = e.target.value
+        this.getMostPopular()
     }
 }

@@ -26,13 +26,18 @@ export class NavBarComponent implements OnInit {
     })
   }
 
-  onClick(e){
+  onClick(e) {
     e.stopPropagation()
     this.autocompleteClosed = true;
   }
 
-  onClickInput(e){
+  onClickInput(e) {
     e.stopPropagation()
     this.autocompleteClosed = false;
+  }
+
+  transform(value:string,substring:string): any {
+    if (value.toLowerCase().includes(substring.toLowerCase())) return value.replace(substring, "<mark>" + substring + "</mark>");
+    return value
   }
 }

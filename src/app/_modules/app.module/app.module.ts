@@ -10,13 +10,13 @@ import { AlertService } from './../../_services/alert.service';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { HighlightSearch } from 'src/app/pipes/highlight-search.pipe';
 
 
 
 @NgModule({
     declarations: [
         AppComponent,
-       
     ],
     imports: [
         BrowserAnimationsModule,
@@ -26,11 +26,14 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
         AppRoutingModule,
         ToasterModule.forRoot(),
         CookieModule.forRoot(),
-        NgMultiSelectDropDownModule.forRoot()
+        NgMultiSelectDropDownModule.forRoot(),
+        
     ],
     providers: [
         { provide: APP_BASE_HREF, useValue: '/' },
-        AlertService
+        AlertService,
+    ],
+    exports:[
     ],
     bootstrap: [AppComponent]
 })

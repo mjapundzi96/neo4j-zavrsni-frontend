@@ -27,6 +27,16 @@ export class SongsService {
     }
   }
 
+  getSongs(tag: string) {
+    return this.http.get(`${BASE_URL}songs?tag=${tag}`, this.getToken())
+      .pipe(
+        map((response: Response) => response.json()),
+        catchError((err: Response) => {
+          this.errorsService._handleError(err);
+          throw err;
+        }))
+  }
+
   getSong(id: number) {
     return this.http.get(`${BASE_URL}songs/${id}`, this.getToken())
       .pipe(
@@ -47,7 +57,7 @@ export class SongsService {
         }))
   }
 
-  getUsersAlsoViewed(id:number){
+  getUsersAlsoViewed(id: number) {
     return this.http.get(`${BASE_URL}songs/${id}/users_also_viewed`, this.getToken())
       .pipe(
         map((response: Response) => response.json()),
@@ -57,17 +67,27 @@ export class SongsService {
         }))
   }
 
-  getRelatedSongs(id:number){
+  getRelatedSongs(id: number) {
     return this.http.get(`${BASE_URL}songs/${id}/related`, this.getToken())
-    .pipe(
-      map((response: Response) => response.json()),
-      catchError((err: Response) => {
-        this.errorsService._handleError(err);
-        throw err;
-      }))
+      .pipe(
+        map((response: Response) => response.json()),
+        catchError((err: Response) => {
+          this.errorsService._handleError(err);
+          throw err;
+        }))
   }
 
-  likeSong(id:number){
+  getSongsWithSimilarTags(id: number){
+    return this.http.get(`${BASE_URL}songs/${id}/similar_tags`, this.getToken())
+      .pipe(
+        map((response: Response) => response.json()),
+        catchError((err: Response) => {
+          this.errorsService._handleError(err);
+          throw err;
+        }))
+  }
+
+  likeSong(id: number) {
     return this.http.post(`${BASE_URL}songs/${id}/like`, {}, this.getToken())
       .pipe(
         map((response: Response) => response.json()),
@@ -77,7 +97,7 @@ export class SongsService {
         }))
   }
 
-  unLikeSong(id:number){
+  unLikeSong(id: number) {
     return this.http.post(`${BASE_URL}songs/${id}/unlike`, {}, this.getToken())
       .pipe(
         map((response: Response) => response.json()),
@@ -87,13 +107,13 @@ export class SongsService {
         }))
   }
 
-  getHasLiked(id:number){
+  getHasLiked(id: number) {
     return this.http.get(`${BASE_URL}songs/${id}/has_liked`, this.getToken())
-    .pipe(
-      map((response: Response) => response.json()),
-      catchError((err: Response) => {
-        this.errorsService._handleError(err);
-        throw err;
-      }))
+      .pipe(
+        map((response: Response) => response.json()),
+        catchError((err: Response) => {
+          this.errorsService._handleError(err);
+          throw err;
+        }))
   }
 }

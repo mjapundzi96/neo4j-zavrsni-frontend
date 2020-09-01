@@ -73,11 +73,11 @@ body {
 .item {
   cursor: pointer;
 
-  
+
 
   &:hover {
-    background: rgba(0,0,0,0.125);
-    
+    background: rgba(0, 0, 0, 0.125);
+
   }
 
 }
@@ -91,6 +91,10 @@ body {
   font-size: 1.5rem !important;
 }
 
+.owl-item {
+  max-width: 250px
+}
+
 .owl-prev {
   left: 0px;
 }
@@ -101,6 +105,7 @@ body {
 
 .block-info {
   max-width: 350px;
+
   .cover-img-outer {
     .cover-img {
       max-width: 200px;
@@ -110,16 +115,16 @@ body {
   }
 }
 
-.iframe-yt{
-  width:100%
+.iframe-yt {
+  width: 100%
 }
 
-iframe{
-  border:0;
+iframe {
+  border: 0;
 }
 
-.link{
-  &:hover{
-    color:darkblue;
+.link {
+  &:hover {
+    color: darkblue;
   }
 }

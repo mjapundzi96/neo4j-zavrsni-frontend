@@ -7,7 +7,7 @@
           <a *ngSwitchCase="'Song'" class="d-block" routerLink="/songs/{{result.id}}">
             <div class="title">
               <i class="fa fa-music"></i>
-              <span> {{result.album.artist.name}} - {{result.name}}</span>
+              <span> {{result.album.artist.name}} - {{result.title}}</span>
             </div>
             <small *ngIf="result.album">{{result.album.name}}, {{result.album.year.low}}</small>
           </a>
@@ -18,7 +18,7 @@
               </div>
               <div>
                 <div class="title">
-                  {{result.name}}
+                  <div innerHTML="{{ transform(result.name, search) }}"></div>
                 </div>
                 <div>
                   <small *ngIf="result.artist">{{result.artist.name}}, {{result.year.low}}</small>

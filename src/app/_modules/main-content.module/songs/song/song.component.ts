@@ -16,6 +16,7 @@ export class SongComponent implements OnInit {
   user_id: number = parseInt(localStorage.getItem("user_id"))
   usersAlsoViewed
   relatedSongs
+  similarTagSongs;
   customOptions = owlOptions
   songUrl: SafeResourceUrl = ''
   hasLiked = false;
@@ -34,21 +35,19 @@ export class SongComponent implements OnInit {
         this.song = res;
         this.songUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.song.songUrl)
         this.likes = this.song.likes;
-      })
-      this.songsService.viewSong(this.id).subscribe(res => {
+        this.songsService.viewSong(this.id).subscribe(res => {
+          this.songsService.getHasLiked(this.id).subscribe(res => {
+            this.hasLiked = res
+          })
+          
+          this.songsService.getUsersAlsoViewed(this.id).subscribe(res => {
+            this.usersAlsoViewed = res;
+          })
 
-      })
-
-      this.songsService.getUsersAlsoViewed(this.id).subscribe(res => {
-        this.usersAlsoViewed = res;
-      })
-
-      this.songsService.getRelatedSongs(this.id).subscribe(res => {
-        this.relatedSongs = res;
-      })
-
-      this.songsService.getHasLiked(this.id).subscribe(res => {
-        this.hasLiked = res
+          this.songsService.getSongsWithSimilarTags(this.id).subscribe(res=>{
+            this.similarTagSongs = res;
+          })
+        })
       })
     })
   }

@@ -48,3 +48,29 @@
     </owl-carousel-o>
   </div>
 </ng-container>
+<ng-container *ngIf="mostPopularSongs">
+  <div class="section mb-5">
+    <div class="d-flex">
+      <h3 class="section-title mr-3">Most popular songs</h3>
+      <div class="form-group">
+        <select (change)="onChangePeriod($event)" class="form-control-sm align-items-center">
+          <option value="week">This week</option>
+          <option value="month">This month</option>
+          <option value="alltime">All time</option>
+        </select>
+      </div>
+    </div>
+    <owl-carousel-o [options]="customOptions">
+      <ng-template carouselSlide *ngFor="let song of mostPopularSongs">
+        <div class="card item" routerLink="/songs/{{song.id}}">
+          <img class="card-img-top" [src]="song.album.coverUrl ? song.album.coverUrl : '../../../../assets/images/album-placeholder.png'" alt="Card image cap">
+          <div class="card-body">
+            <span><i class="fa fa-music"></i>&nbsp;</span>
+            <span>{{song.album.artist.name}} - </span>
+            <span>{{song.title}}</span>
+          </div>
+        </div>
+      </ng-template>
+    </owl-carousel-o>
+  </div>
+</ng-container>

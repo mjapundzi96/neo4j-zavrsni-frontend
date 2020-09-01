@@ -28,7 +28,7 @@ export class AppService {
     }
   }
 
-  getBestOfPreferredArtist(){
+  getBestOfPreferredArtist() {
     return this.http.get(`${BASE_URL}bestof_preferred_artist`, this.getToken())
       .pipe(
         map((response: Response) => response.json()),
@@ -38,7 +38,7 @@ export class AppService {
         }))
   }
 
-  getBestOfPreferredGenre(){
+  getBestOfPreferredGenre() {
     return this.http.get(`${BASE_URL}bestof_preferred_genre`, this.getToken())
       .pipe(
         map((response: Response) => response.json()),
@@ -48,8 +48,18 @@ export class AppService {
         }))
   }
 
-  getBestOfPreferredDecade(){
+  getBestOfPreferredDecade() {
     return this.http.get(`${BASE_URL}bestof_preferred_decade`, this.getToken())
+      .pipe(
+        map((response: Response) => response.json()),
+        catchError((err: Response) => {
+          this.errorsService._handleError(err);
+          throw err;
+        }))
+  }
+
+  getMostPopularSongs(period: 'week' | 'month' | 'alltime') {
+    return this.http.get(`${BASE_URL}most_popular_songs?period=${period}`, this.getToken())
       .pipe(
         map((response: Response) => response.json()),
         catchError((err: Response) => {

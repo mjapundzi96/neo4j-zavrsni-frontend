@@ -9,3 +9,13 @@
     border-radius:3px;
     padding:7px;
 }
+
+.tag{
+  padding:5px 7px;
+  color:grey;
+  cursor: pointer;
+  &:hover{
+    background:lightgrey;
+    border-radius:3px;
+  }
+}
