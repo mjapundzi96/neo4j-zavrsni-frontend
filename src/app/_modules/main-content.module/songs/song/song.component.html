@@ -15,42 +15,21 @@
   </div>
   <div>
     <h6>Tags:</h6>
-    <div  class="float-left tag mr-2" *ngFor="let tag of song.tags" routerLink="/songs" [queryParams]="{tag:tag}">{{tag}}</div>
+    <div  class="float-left tag mr-2" *ngFor="let tag of song.tags" routerLink="/tags/{{tag}}">{{tag}}</div>
   </div>
   <div class="clearfix"></div>
 </div>
-<ng-container *ngIf="relatedSongs">
-  <div class="section mb-5">
-    <h3 class="section-title">Related songs</h3>
-    <owl-carousel-o [options]="customOptions">
-      <ng-template carouselSlide *ngFor="let song of relatedSongs">
-        <div class="card item" routerLink="/songs/{{song.id}}">
-          <img class="card-img-top" [src]="song.album.coverUrl ? song.album.coverUrl : '../../../../assets/images/album-placeholder.png'" alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title">
-              <span><i class="fa fa-music"></i>&nbsp;</span>
-              <span>{{song.album.artist.name}} - </span>
-              <span>{{song.title}}</span>
-            </h5>
-          </div>
-        </div>
-      </ng-template>
-    </owl-carousel-o>
-  </div>
-</ng-container>
 <ng-container *ngIf="similarTagSongs">
   <div class="section mb-5">
-    <h3 class="section-title">Songs with similar tags</h3>
+    <h3 class="section-title">Similar songs</h3>
     <owl-carousel-o [options]="customOptions">
       <ng-template carouselSlide *ngFor="let song of similarTagSongs">
         <div class="card item" routerLink="/songs/{{song.id}}">
           <img class="card-img-top" [src]="song.album.coverUrl ? song.album.coverUrl : '../../../../assets/images/album-placeholder.png'" alt="Card image cap">
           <div class="card-body">
-            <h5 class="card-title">
               <span><i class="fa fa-music"></i>&nbsp;</span>
               <span>{{song.album.artist.name}} - </span>
               <span>{{song.title}}</span>
-            </h5>
           </div>
         </div>
       </ng-template>

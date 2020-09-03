@@ -10,7 +10,6 @@ import { AlertService } from './../../_services/alert.service';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
-import { HighlightSearch } from 'src/app/pipes/highlight-search.pipe';
 
 
 

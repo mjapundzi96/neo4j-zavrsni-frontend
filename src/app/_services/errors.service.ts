@@ -23,7 +23,8 @@ export class ErrorsService {
                 this.router.navigate([`/auth/signin`]);
             }, 2000);
         } else if (error.status === 400) {
-            this.alertService.error(JSON.parse(error._body).message)       
+            console.log(JSON.parse(error._body).message[0])
+            this.alertService.error(JSON.parse(error._body).message[0].constraints.matches)       
         } else if (error.status === 403) {
             setTimeout(() => {
                 this.alertService.error('Access denied');

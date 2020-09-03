@@ -1,8 +1,11 @@
-<div class="block-info" *ngIf="artist">
-  <h3 class="mx-auto">{{artist.name}}</h3>
-  <div class="mb-2">{{artist.country}}</div>
-  <div class="cover-img-outer mb-4">
-    <img class="cover-img" [src]="artist.imageUrl ? artist.imageUrl : '../../../../../assets/images/artist-placeholder.png'" />
+<div>
+  <div class="block-info" *ngIf="artist">
+    <h3 class="mx-auto">{{artist.name}}</h3>
+    <div class="mb-2">{{artist.country}}</div>
+    <div class="cover-img-outer mb-4">
+      <img class="cover-img" [src]="artist.imageUrl ? artist.imageUrl : '../../../../../assets/images/artist-placeholder.png'" />
+    </div>
+   
   </div>
   <div class="section mb-5">
     <h3 class="section-title">Albums</h3>
@@ -12,10 +15,8 @@
           <div class="card item" routerLink="/albums/{{album.id}}">
             <img class="card-img-top" [src]="album.coverUrl ? album.coverUrl : '../../../../assets/images/album-placeholder.png'" alt="Card image cap">
             <div class="card-body">
-              <h5 class="card-title">
-                <span>{{album.name}} </span>
-                <span>({{album.year}})</span>
-              </h5>
+              <span>{{album.name}} </span>
+              <span>({{album.year}})</span>
             </div>
           </div>
         </ng-template>

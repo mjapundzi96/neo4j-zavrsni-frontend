@@ -1,21 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SongComponent } from './song/song.component';
-import { SongsComponent } from './songs.component';
+import { TagComponent } from './tag/tag.component';
+import { TagsComponent } from './tags.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { RouterModule } from '@angular/router';
-import { SongsRoutingModule } from './songs-routing.module';
+import { TagsRoutingModule } from './tags-routing.module';
 
 
 @NgModule({
-  declarations: [SongComponent, SongsComponent],
+  declarations: [TagsComponent, TagComponent],
   imports: [
     CommonModule,
     CarouselModule,
     RouterModule,
-    SongsRoutingModule
+    TagsRoutingModule
   ],
-  exports:[
+  exports: [
   ]
 })
-export class SongsModule { }
+export class TagsModule { }

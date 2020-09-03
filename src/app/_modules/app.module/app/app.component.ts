@@ -1,6 +1,4 @@
-import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
-import { isPlatformBrowser } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
 
 declare var ga: Function;
 
@@ -11,15 +9,8 @@ declare var ga: Function;
 })
 export class AppComponent implements OnInit {
     constructor(
-        private router: Router
     ) {}
 
     ngOnInit() {
-        this.router.events.subscribe((evt) => {
-            if (!(evt instanceof NavigationEnd)) {
-                return;
-            }
-            window.scrollTo(0, 0);
-        });
     }
 }

@@ -5,6 +5,21 @@ import { map, catchError } from 'rxjs/operators';
 import { ErrorsService } from './errors.service';
 import { BASE_URL } from '../../environments/environment';
 import { AlertService } from './alert.service'
+import { Observable } from 'rxjs';
+import { Song } from './songs.service';
+
+export interface Album {
+  id: number;
+  name: string;
+  coverUrl: string;
+  year:number;
+  artist: {
+    id: number;
+    name: string;
+  };
+  songs?:Array<Song>
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -12,9 +27,7 @@ export class AlbumsService {
 
   constructor(
     private http: Http,
-    private router: Router,
-    private errorsService: ErrorsService,
-    private alertService: AlertService) {
+    private errorsService: ErrorsService) {
   }
 
   private getToken() {
@@ -27,7 +40,7 @@ export class AlbumsService {
     }
   }
 
-  getAlbum(id: number) {
+  getAlbum(id: number):Observable<Album> {
     return this.http.get(`${BASE_URL}albums/${id}`, this.getToken())
       .pipe(
         map((response: Response) => response.json()),

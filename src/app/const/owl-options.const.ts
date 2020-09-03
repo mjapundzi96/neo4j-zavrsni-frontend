@@ -13,6 +13,20 @@ export const owlOptions: OwlOptions = {
     slideBy: 'page',
     smartSpeed: 600,
     rewind:false,
-    items:5,
+    items:6,
     nav: true,
+    responsive:{
+        0:{
+            items:3
+        },
+        576:{
+            items:4
+        },
+        767:{
+            items:6
+        },
+        992:{
+            items:7
+        }
+    }
 }

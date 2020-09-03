@@ -7,9 +7,9 @@
           <a *ngSwitchCase="'Song'" class="d-block" routerLink="/songs/{{result.id}}">
             <div class="title">
               <i class="fa fa-music"></i>
-              <span> {{result.album.artist.name}} - {{result.title}}</span>
+              <span [innerHTML]="transform((result.album.artist.name + ' - ' + result.title), search)"></span>
             </div>
-            <small *ngIf="result.album">{{result.album.name}}, {{result.album.year.low}}</small>
+            <small *ngIf="result.album" [innerHTML]="transform((result.album.name + ', ' + result.album.year.low), search)"></small>
           </a>
           <a *ngSwitchCase="'Album'" class="d-block" routerLink="/albums/{{result.id}}">
             <div class="d-flex">
@@ -18,10 +18,10 @@
               </div>
               <div>
                 <div class="title">
-                  <div innerHTML="{{ transform(result.name, search) }}"></div>
+                  <div [innerHTML]="transform(result.name, search)"></div>
                 </div>
                 <div>
-                  <small *ngIf="result.artist">{{result.artist.name}}, {{result.year.low}}</small>
+                  <small *ngIf="result.artist" [innerHTML]="transform((result.artist.name + ', ' + result.year.low), search)"></small>
                 </div>
               </div>
             </div>
@@ -31,12 +31,11 @@
             <div class="img-outer mb-1">
               <img [src]="result.imageUrl" class="mr-1 mb-1" width="100px" class="d-block mx-auto">
             </div>
-            <div class="title text-center">
-              {{result.name}}
+            <div [innerHTML]="transform(result.name, search)" class="title text-center">
             </div>
           </a>
         </div>
-
+        <div class="list-group-item" *ngIf="searchResults.length === 0">No results</div>
       </div>
     </div>
   </div>

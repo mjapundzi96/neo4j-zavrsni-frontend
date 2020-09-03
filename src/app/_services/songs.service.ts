@@ -5,16 +5,37 @@ import { map, catchError } from 'rxjs/operators';
 import { ErrorsService } from './errors.service';
 import { BASE_URL } from '../../environments/environment';
 import { AlertService } from './alert.service'
+import { Observable } from 'rxjs';
+
+export interface Song {
+  id: number;
+  title: string;
+  views: number;
+  likes: number;
+  album?: {
+    id: number;
+    name: string;
+    coverUrl: string;
+    year: number;
+    artist?: {
+      id: number;
+      name: string;
+
+    }
+  };
+  tags?:Array<string>;
+}
+
 @Injectable({
   providedIn: 'root'
 })
+
 export class SongsService {
 
   constructor(
     private http: Http,
-    private router: Router,
     private errorsService: ErrorsService,
-    private alertService: AlertService) {
+  ) {
   }
 
   private getToken() {
@@ -27,7 +48,7 @@ export class SongsService {
     }
   }
 
-  getSongs(tag: string) {
+  getSongs(tag: string):Observable<Array<Song>> {
     return this.http.get(`${BASE_URL}songs?tag=${tag}`, this.getToken())
       .pipe(
         map((response: Response) => response.json()),
@@ -37,7 +58,7 @@ export class SongsService {
         }))
   }
 
-  getSong(id: number) {
+  getSong(id: number):Observable<Song> {
     return this.http.get(`${BASE_URL}songs/${id}`, this.getToken())
       .pipe(
         map((response: Response) => response.json()),
@@ -57,7 +78,7 @@ export class SongsService {
         }))
   }
 
-  getUsersAlsoViewed(id: number) {
+  getUsersAlsoViewed(id: number):Observable<Array<Song>> {
     return this.http.get(`${BASE_URL}songs/${id}/users_also_viewed`, this.getToken())
       .pipe(
         map((response: Response) => response.json()),
@@ -67,7 +88,7 @@ export class SongsService {
         }))
   }
 
-  getRelatedSongs(id: number) {
+  getRelatedSongs(id: number):Observable<Array<Song>> {
     return this.http.get(`${BASE_URL}songs/${id}/related`, this.getToken())
       .pipe(
         map((response: Response) => response.json()),
@@ -77,7 +98,7 @@ export class SongsService {
         }))
   }
 
-  getSongsWithSimilarTags(id: number){
+  getSongsWithSimilarTags(id: number):Observable<Array<Song>> {
     return this.http.get(`${BASE_URL}songs/${id}/similar_tags`, this.getToken())
       .pipe(
         map((response: Response) => response.json()),
@@ -107,7 +128,7 @@ export class SongsService {
         }))
   }
 
-  getHasLiked(id: number) {
+  getHasLiked(id: number):Observable<boolean> {
     return this.http.get(`${BASE_URL}songs/${id}/has_liked`, this.getToken())
       .pipe(
         map((response: Response) => response.json()),

@@ -5,6 +5,14 @@ import { map, catchError } from 'rxjs/operators';
 import { ErrorsService } from './errors.service';
 import { BASE_URL } from '../../environments/environment';
 import { AlertService } from './alert.service'
+import { Album } from './albums.service';
+
+export interface Artist{
+  id:number;
+  name: string;
+  albums:Array<Album>
+}
+
 @Injectable({
   providedIn: 'root'
 })

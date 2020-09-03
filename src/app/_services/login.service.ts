@@ -5,6 +5,12 @@ import { map, catchError } from 'rxjs/operators';
 import { ErrorsService } from './errors.service';
 import { BASE_URL } from './../../environments/environment';
 import { AlertService } from './alert.service'
+import { Observable } from 'rxjs';
+
+interface LoginData{
+    username:string;
+    password: string;
+}
 
 @Injectable({
     providedIn: 'root',
@@ -30,18 +36,8 @@ export class LoginService {
     private loginHeaders = new Headers(/* { 'Accept': 'application/json', 'Content-Type': 'application/json' } */);
     private loginOptions = new RequestOptions({ headers: this.loginHeaders });
 
-    private getToken() {
-        const token = 'Bearer ' + localStorage.getItem('securityToken');
-        if (token) {
-            const headers = new Headers({
-                'Authorization': token,
-            });
-            return new RequestOptions({ headers: headers });
-        }
-    }
-
-
-    login(data) {
+   
+    login(data:LoginData):Observable<LoginData> {
         return this.http.post(BASE_URL + 'auth/signin', data, this.loginOptions)
             .pipe(
                 map((response: Response) => {
@@ -59,7 +55,7 @@ export class LoginService {
                 }))
     }
 
-    register(data) {
+    register(data:LoginData):Observable<LoginData> {
         return this.http.post(BASE_URL + 'auth/signup', data, this.loginOptions)
             .pipe(
                 map((response: Response) => {

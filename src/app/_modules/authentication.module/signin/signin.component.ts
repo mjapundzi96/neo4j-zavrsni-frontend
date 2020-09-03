@@ -38,8 +38,8 @@ export class SigninComponent implements OnInit {
 
     onSubmit() {
         this.loginService.login(this.form.value)
-            .subscribe(res => {
-                this.router.navigateByUrl('/main/')
+            .subscribe(_ => {
+                this.router.navigateByUrl('/')
             });
 
     }

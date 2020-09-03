@@ -5,7 +5,7 @@ import { SigninComponent } from './signin/signin.component';
 import { AuthComponent } from './auth/auth.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared.module/shared.module';
-import { SingupComponent } from './singup/singup.component';
+import { SignUpComponent } from './signup/signup.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { FormsModule } from '@angular/forms';
 
@@ -23,7 +23,7 @@ import { FormsModule } from '@angular/forms';
     declarations: [
         SigninComponent,
         AuthComponent,
-        SingupComponent
+        SignUpComponent
     ],
     providers: [
     ]

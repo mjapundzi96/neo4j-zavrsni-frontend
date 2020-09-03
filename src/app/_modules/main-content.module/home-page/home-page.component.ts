@@ -1,11 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { UsersService } from 'src/app/_services/users.service';
-import { SlidesOutputData, OwlOptions } from 'ngx-owl-carousel-o';
-import { Router } from '@angular/router';
 import { owlOptions } from 'src/app/const/owl-options.const'
 import { AppService } from 'src/app/_services/app.service';
-import { GenresService } from 'src/app/_services/genres.service';
-
 
 @Component({
     selector: 'home-page',
@@ -21,10 +16,7 @@ export class HomePageComponent implements OnInit {
     bestOfPreferredDecade;
     period: 'week' | 'month' | 'alltime' = 'week'
     constructor(
-        private usersService: UsersService,
-        private router: Router,
         private appService: AppService,
-        private genresService: GenresService
     ) {
 
     }

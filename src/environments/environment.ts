@@ -6,8 +6,6 @@ export const environment = {
     production: false,
     test: false,
     development: true,
-    application_id: '1',
-    protocol_version: '2'
 };
 
 export const BASE_URL = 'http://localhost:3000/';

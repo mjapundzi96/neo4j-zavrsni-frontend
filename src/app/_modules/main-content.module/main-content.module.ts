@@ -11,9 +11,7 @@ import { ArtistsModule } from './artists/artists.module';
 import { AlbumsModule } from './albums/albums.module';
 import { SongsModule } from './songs/songs.module';
 import { CarouselModule } from 'ngx-owl-carousel-o';
-import { UserProfileComponent } from './user-profile/user-profile.component';
 import { NavBarComponent } from 'src/app/_components/nav-bar/nav-bar.component';
-import { HighlightSearch } from 'src/app/pipes/highlight-search.pipe';
 
 
 @NgModule({
@@ -36,11 +34,8 @@ import { HighlightSearch } from 'src/app/pipes/highlight-search.pipe';
         NavBarComponent,
         FooterComponent,
         SpinnerComponent,
-        UserProfileComponent,
-
     ],
     providers: [
-        HighlightSearch
     ]
 })
 

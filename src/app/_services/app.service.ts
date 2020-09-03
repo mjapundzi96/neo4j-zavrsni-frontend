@@ -1,10 +1,18 @@
 import { Injectable } from '@angular/core';
 import { Headers, Response, RequestOptions, Http } from '@angular/http';
-import { Router } from '@angular/router';
 import { map, catchError } from 'rxjs/operators';
 import { ErrorsService } from './errors.service';
 import { BASE_URL } from '../../environments/environment';
-import { AlertService } from './alert.service'
+import { Song } from './songs.service';
+import { Observable } from 'rxjs';
+import { Album } from './albums.service'
+import { Artist } from './artists.service';
+
+export interface SearchResultType{
+  type:'Artist' | 'Album' | 'Song';
+  result: Artist | Album | Song
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -12,9 +20,7 @@ export class AppService {
 
   constructor(
     private http: Http,
-    private router: Router,
     private errorsService: ErrorsService,
-    private alertService: AlertService
   ) {
   }
 
@@ -28,7 +34,7 @@ export class AppService {
     }
   }
 
-  getBestOfPreferredArtist() {
+  getBestOfPreferredArtist(): Observable<Array<Song>> {
     return this.http.get(`${BASE_URL}bestof_preferred_artist`, this.getToken())
       .pipe(
         map((response: Response) => response.json()),
@@ -38,7 +44,7 @@ export class AppService {
         }))
   }
 
-  getBestOfPreferredGenre() {
+  getBestOfPreferredGenre(): Observable<Array<Song>> {
     return this.http.get(`${BASE_URL}bestof_preferred_genre`, this.getToken())
       .pipe(
         map((response: Response) => response.json()),
@@ -48,7 +54,7 @@ export class AppService {
         }))
   }
 
-  getBestOfPreferredDecade() {
+  getBestOfPreferredDecade(): Observable<Array<Song>> {
     return this.http.get(`${BASE_URL}bestof_preferred_decade`, this.getToken())
       .pipe(
         map((response: Response) => response.json()),
@@ -58,7 +64,7 @@ export class AppService {
         }))
   }
 
-  getMostPopularSongs(period: 'week' | 'month' | 'alltime') {
+  getMostPopularSongs(period: 'week' | 'month' | 'alltime'): Observable<Array<Song>> {
     return this.http.get(`${BASE_URL}most_popular_songs?period=${period}`, this.getToken())
       .pipe(
         map((response: Response) => response.json()),
@@ -68,7 +74,7 @@ export class AppService {
         }))
   }
 
-  searchAll(search: string) {
+  searchAll(search: string): Observable<Array<Song>> {
     return this.http.get(`${BASE_URL}search_all?search=${search}`, this.getToken())
       .pipe(
         map((response: Response) => response.json()),

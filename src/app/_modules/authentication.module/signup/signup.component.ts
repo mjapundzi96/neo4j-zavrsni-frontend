@@ -2,16 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, AbstractControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from '../../../_services/login.service';
-import { GenresService } from '../../../_services/genres.service';
-import { IDropdownSettings } from 'ng-multiselect-dropdown';
 
 
 @Component({
-  selector: 'app-singup',
-  templateUrl: './singup.component.html',
-  styleUrls: ['./singup.component.scss']
+  selector: 'app-signup',
+  templateUrl: './signup.component.html',
+  styleUrls: ['./signup.component.scss']
 })
-export class SingupComponent implements OnInit {
+export class SignUpComponent implements OnInit {
 
   form: FormGroup;
   username: AbstractControl;
@@ -20,13 +18,9 @@ export class SingupComponent implements OnInit {
   favorite_genres: AbstractControl;
   activeField = false;
   activeFieldPw = false;
-  genres = []
-  selectedGenres = []
-  dropdownSettings: IDropdownSettings;
   constructor(
     private router: Router,
     private loginService: LoginService,
-    private genresService: GenresService
   ) { }
 
   ngOnInit() {
@@ -54,10 +48,6 @@ export class SingupComponent implements OnInit {
     this.confirm_password.valueChanges.subscribe((val)=>{
       this.confirmPassword();
     })
-
-    this.genresService.getAllGenres().subscribe(res => {
-      this.genres = res;
-    })
   }
 
   confirmPassword(){
@@ -71,20 +61,13 @@ export class SingupComponent implements OnInit {
       password: this.password.value,
     }
     this.loginService.register(data)
-      .subscribe(res => {
-        this.router.navigateByUrl('/main/')
+      .subscribe(_ => {
+        this.router.navigateByUrl('/auth/signin')
       });
 
   }
 
   setActive(type: string, status: boolean) {
     (type === 'login') ? this.activeField = status : this.activeFieldPw = status;
-  }
-
-  onItemSelect(item: any) {
-    
-  }
-  onSelectAll(items: any) {
-    
   }
 }

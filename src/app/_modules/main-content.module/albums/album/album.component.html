@@ -1,11 +1,15 @@
 <div class="block-info" *ngIf="album">
-  <h3 class="mx-auto">{{album.name}}</h3>
-  <div class="mb-2">{{album.year}}</div>
+
+  <div class="mb-2">
+    <h3 class="mx-auto">{{album.name}}<small> ({{album.year}})</small></h3>
+    <span><a routerLink="/artists/{{album.artist.id}}">{{album.artist.name}}</a></span>
+  </div>
+
   <div class="cover-img-outer mb-4">
     <img class="cover-img" [src]="album.coverUrl ? album.coverUrl : '../../../../../assets/images/album-placeholder.png'" />
   </div>
   <div class="section mb-5">
-    <h3 class="section-title">Song list</h3>
+    <h3 class="section-title">Track list</h3>
     <div class="list-group">
       <a routerLink="/songs/{{song.id}}" class="list-group-item list-group-item-action" *ngFor="let song of album.songs">
         <div class="mb-2 title">

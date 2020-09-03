@@ -1,0 +1,22 @@
+<ng-container *ngIf="songs">
+  <div class="section mb-5" *ngIf="songs.length > 0; else noResults">
+    <h3 class="section-title">Songs with tag "{{tag}}"</h3>
+    <owl-carousel-o [options]="customOptions">
+      <ng-template carouselSlide *ngFor="let song of songs">
+        <div class="card item" routerLink="/songs/{{song.id}}">
+          <img class="card-img-top" [src]="song.album.coverUrl ? song.album.coverUrl : '../../../../assets/images/album-placeholder.png'" alt="Card image cap">
+          <div class="card-body">
+
+            <span><i class="fa fa-music"></i>&nbsp;</span>
+            <span>{{song.album.artist.name}} - </span>
+            <span>{{song.title}}</span>
+          </div>
+        </div>
+      </ng-template>
+    </owl-carousel-o>
+
+  </div>
+  <ng-template #noResults>
+    <div class="mx-2">No results for tag "{{tag}}"</div>
+  </ng-template>
+</ng-container>
